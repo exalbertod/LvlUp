@@ -1,0 +1,55 @@
+[alembic_version]
+    *version_num {label:"VARCHAR(32)"}
+[logro]
+    *id {label:"INTEGER"}
+    descripcion {label:"VARCHAR(500)"}
+    titulo {label:"VARCHAR(120)"}
+    unlocked_at {label:"VARCHAR(100)"}
+    user_id {label:"INTEGER"}
+[user]
+    *id {label:"INTEGER"}
+    avatar_url {label:"VARCHAR(255)"}
+    email {label:"VARCHAR(120)"}
+    level {label:"INTEGER"}
+    mood {label:"VARCHAR(100)"}
+    objetivo {label:"VARCHAR(255)"}
+    password {label:"VARCHAR"}
+    username {label:"VARCHAR(120)"}
+    xp {label:"INTEGER"}
+[logro_stat]
+    *id {label:"INTEGER"}
+    logro_id {label:"INTEGER"}
+    stat_id {label:"INTEGER"}
+[stat]
+    *id {label:"INTEGER"}
+    current_xp {label:"INTEGER"}
+    missions_completed {label:"INTEGER"}
+    time_spent {label:"INTEGER"}
+    total_xp {label:"INTEGER"}
+    user_id {label:"INTEGER"}
+[mision]
+    *id {label:"INTEGER"}
+    categoria {label:"VARCHAR(100)"}
+    completed {label:"BOOLEAN"}
+    created_at {label:"VARCHAR(100)"}
+    descripcion {label:"VARCHAR(500)"}
+    titulo {label:"VARCHAR(120)"}
+    user_id {label:"INTEGER"}
+    xp_reward {label:"INTEGER"}
+[mision_logro]
+    *id {label:"INTEGER"}
+    logro_id {label:"INTEGER"}
+    mision_id {label:"INTEGER"}
+[mision_stat]
+    *id {label:"INTEGER"}
+    mision_id {label:"INTEGER"}
+    stat_id {label:"INTEGER"}
+user."id" 1--* logro."user_id"
+logro."id" 1--* logro_stat."logro_id"
+stat."id" 1--* logro_stat."stat_id"
+user."id" 1--* stat."user_id"
+user."id" 1--* mision."user_id"
+logro."id" 1--* mision_logro."logro_id"
+mision."id" 1--* mision_logro."mision_id"
+stat."id" 1--* mision_stat."stat_id"
+mision."id" 1--* mision_stat."mision_id"

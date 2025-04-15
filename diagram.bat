@@ -1,0 +1,1 @@
+eralchemy -i sqlite:////tmp/test.db -o schema.er
